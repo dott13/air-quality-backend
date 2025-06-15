@@ -68,5 +68,20 @@ app.get('/api/readings/latest', (req, res) => {
     });
 });
 
+// GET /api/test
+app.get('/api/test', (req, res) => {
+    res.json({ status: 'ok' });
+});
+
+// GET /api/window/open
+app.post('/api/window/open', (req, res) => {
+    // TODO: save to a `commands` table or publish to MQTT/WebSocket
+    console.log('Received window open command');
+    res.json({
+        success: true,
+        message: 'Window open command registered'
+    });
+});
+
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
